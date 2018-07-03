@@ -13,15 +13,21 @@ import {
   Image
 } from 'react-native';
 import TabNavigator from 'react-native-tab-navigator';
+import Home from '../Home/XMGHome';
+import Mine from '../Mine/XMGMine';
+import More from '../More/XMGMore';
+import Shop from '../Shop/XMGShop';
 
 type Props = {};
 export default class Main extends Component<Props> {
   //初始化页面变量
-  getInitialState(){
-    return {
-      selectTab:'home'
+    constructor(props){
+        super(props);
+        // const page = this.props.navigation.state.page?this.props.navigation.state.page:'首页';
+        this.state = {
+            selectedTab:'home'
+        }
     }
-  }
   render() {
     return (
       <TabNavigator>
@@ -32,6 +38,7 @@ export default class Main extends Component<Props> {
             onPress={()=>{this.setState({selectTab:'home'})}}
             selected={this.state.selectTab === 'home'}
         >
+          <Home/>
         </TabNavigator.Item>
           <TabNavigator.Item
               title='商家'
@@ -40,6 +47,7 @@ export default class Main extends Component<Props> {
               onPress={()=>{this.setState({selectTab:'shop'})}}
               selected={this.state.selectTab === 'shop'}
           >
+            <Shop/>
           </TabNavigator.Item>
           <TabNavigator.Item
               title='我的'
@@ -48,6 +56,7 @@ export default class Main extends Component<Props> {
               onPress={()=>{this.setState({selectTab:'mine'})}}
               selected={this.state.selectTab === 'mine'}
           >
+            <Mine/>
           </TabNavigator.Item>
           <TabNavigator.Item
               title='更多'
@@ -56,6 +65,7 @@ export default class Main extends Component<Props> {
               onPress={()=>{this.setState({selectTab:'more'})}}
               selected={this.state.selectTab === 'more'}
           >
+            <More/>
           </TabNavigator.Item>
       </TabNavigator>
     );
@@ -64,7 +74,7 @@ export default class Main extends Component<Props> {
 
 const styles = StyleSheet.create({
   iconStyle:{
-    width:30,
-    height:30,
+    width:Platform.OS === 'ios' ? 30 : 25,
+    height:Platform.OS === 'ios' ? 30 : 25,
   }
 });
