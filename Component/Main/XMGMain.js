@@ -25,7 +25,7 @@ export default class Main extends Component<Props> {
         super(props);
         // const page = this.props.navigation.state.page?this.props.navigation.state.page:'首页';
         this.state = {
-            selectedTab:'home'
+            selectTab:'home'
         }
     }
   render() {
