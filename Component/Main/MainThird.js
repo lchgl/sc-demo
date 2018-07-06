@@ -5,10 +5,13 @@ import {
 } from 'react-navigation';
 import Ionicons from 'react-native-vector-icons/Ionicons';
 
+
 import Home from '../Home/XMGHome';
 import Mine from '../Mine/XMGMine';
 import More from '../More/XMGMore';
 import Shop from '../Shop/XMGShop';
+import HomeDetail from '../Home/HomeDetail';
+import LaunchImg from '../Main/LaunchImage';
 
 const ScreenTab = createTabNavigator({
         Home:{
@@ -85,6 +88,7 @@ const ScreenTab = createTabNavigator({
 
 const myNavigator=createStackNavigator(
     {
+        LaunchImg:LaunchImg,
         TabNav:{
             screen:ScreenTab,
             navigationOptions: ({ navigation }) => ({
@@ -92,10 +96,14 @@ const myNavigator=createStackNavigator(
                 header:null,
             }),
         },
-        // Home:Home
+        HomeDetail:HomeDetail
     },
     {
-        initialRouteName:'TabNav',
+        initialRouteName:'LaunchImg',
+        navigationOptions: ({ navigation }) => ({
+            // title: 'Home',
+            header:null,
+        })
     }
 );
 export default myNavigator

@@ -79,7 +79,7 @@ export default myNavigator
 
 // export default TabScreens
 
-// export default class Main extends Component<Props> {
+// export default class main extends Component<Props> {
 //   //初始化页面变量
 //     constructor(props){
 //         super(props);
