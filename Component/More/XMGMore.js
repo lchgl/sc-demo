@@ -6,8 +6,10 @@ import {
   Text,
   View,
   Image,
-  TouchableOpacity
+  TouchableOpacity,
+  ScrollView
 } from 'react-native';
+import CommonCell from './CommonCell';
 
 type Props = {};
 
@@ -16,9 +18,17 @@ export default class More extends Component<Props> {
     return (
       <View style={styles.container}>
           {this.renderNavBar()}
-        <Text style={styles.welcome}>
-          More更多组件页面
-        </Text>
+        <ScrollView>
+          <View style={{marginTop:15,marginBottom:15}}>
+            <CommonCell title="搜一搜"/>
+          </View>
+          <View>
+            <CommonCell
+                title="省流量模式"
+                isSwitch={true}
+            />
+          </View>
+        </ScrollView>
       </View>
     );
   }
