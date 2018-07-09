@@ -7,15 +7,17 @@ import {
   View,
   Image,
   TouchableOpacity,
-  Switch
+  Switch,
+  Modal
 } from 'react-native';
 
 type Props = {};
 
 export default class CommonCell extends Component<Props> {
     static defaultProps = {
-       isSwitch:false,
-        title:''
+        isSwitch:false,
+        title:'',
+        rightTitle:''
     };
 
     //static propTypes = {
@@ -26,6 +28,7 @@ export default class CommonCell extends Component<Props> {
       this.state={
           //title:'111',//标题
           //isSwitch:this.props.isSwitch//是否要开关
+          switchIsOn:false,
       }
   }
   render() {
@@ -33,7 +36,11 @@ export default class CommonCell extends Component<Props> {
     <TouchableOpacity onPress={()=>{alert('点了')}}>
       <View style={styles.container}>
 		<Text style={{marginLeft:15}}>{this.props.title}</Text>
-          {this.renderRightPart()}
+        <View style={{marginRight:15,flexDirection:'row',alignItems:'center'}}>
+            <Text style={{marginRight:10}}>{this.props.rightTitle}</Text>
+            {this.renderRightPart()}
+        </View>
+
       </View>
     </TouchableOpacity>
     );
@@ -42,7 +49,7 @@ export default class CommonCell extends Component<Props> {
   renderRightPart() {
     if(this.props.isSwitch){
         return(
-            <Switch/>
+            <Switch value={this.state.switchIsOn} onValueChange={()=>{this.setState({switchIsOn:!this.state.switchIsOn})}}  />
         )
     }else{
         return(
@@ -60,11 +67,10 @@ const styles = StyleSheet.create({
         justifyContent:'space-between',
         alignItems:'center',
         borderBottomColor:'#ddd',
-        borderBottomWidth:0.5
+        borderBottomWidth:1
     },
     IconImg:{
         width:10,
-        height:15,
-        marginRight:15
+        height:15
     }
 });
